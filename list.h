@@ -18,8 +18,8 @@ public:
     ~List();
     void insertAtFront(const T &);
     void insertAtBack(const T &);
-    bool removeFromFront(const T &);
-    bool removeFromBack(const T &);
+    bool removeFromFront(T &);
+    bool removeFromBack(T &);
     bool isEmpty() const;
     void print() const;
 };
@@ -37,7 +37,9 @@ List<T>::~List()
             std::cout << t->data;
             c = c->next;
             delete t;
+            std::cout << "\n";
         }
+        std::cout << "\n";
     }
     std::cout << "All nodes destroyed";
 }
@@ -76,7 +78,7 @@ void List<T>::insertAtFront(const T &item)
 template <class T>
 void List<T>::insertAtBack(const T &item)
 {
-    ListNode<T *> n;
+    ListNode<T> *n;
 
     n = getNewNode(item);
     if (isEmpty())
@@ -88,7 +90,7 @@ void List<T>::insertAtBack(const T &item)
     }
 }
 template <class T>
-bool List<T>::removeFromFront(const T &item)
+bool List<T>::removeFromFront(T &item)
 {
     if (isEmpty())
         return false;
@@ -107,7 +109,7 @@ bool List<T>::removeFromFront(const T &item)
     }
 }
 template <class T>
-bool List<T>::removeFromBack(const T &item)
+bool List<T>::removeFromBack(T &item)
 {
     if (isEmpty())
         return false;
@@ -134,17 +136,19 @@ void List<T>::print() const
 {
     if (isEmpty())
     {
-        std::cout << "The list is empty";
+        std::cout << "The list is empty\n\n";
         return;
     }
     ListNode<T> *t;
     t = first;
 
+    std::cout << "list : ";
     while (t != 0)
     {
-        std::cout << t->data;
+        std::cout << t->data << "   ";
         t = t->next;
     }
+    std::cout << "\n\n";
 }
 
 #endif
