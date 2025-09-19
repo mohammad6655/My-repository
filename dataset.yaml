@@ -1,0 +1,8 @@
+names:
+- inhibitory
+- danger
+- mandatory
+- other
+nc: 4
+train: E:/Datasets/Traffic Signs Dataset in YOLO format/train/images
+val: E:/Datasets/Traffic Signs Dataset in YOLO format/validation/images
